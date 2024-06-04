@@ -1,12 +1,8 @@
-// aqui serao colocadas todas as rotas que envolvam cidades
-
 const express = require('express');
 const router = express.Router();
 const Cidade = require('../models/Cidade');
 
-// usando o router para nao ter que jogar todas as rotas em 1 mesmo arquivo
-
-// rota para criar cidade
+// Criar uma nova cidade
 router.post('/', async (req, res) => {
     const { nome, estado } = req.body;
     try {
@@ -18,13 +14,33 @@ router.post('/', async (req, res) => {
     }
 });
 
-// rota para pegar as cidades
+// Obter todas as cidades
 router.get('/', async (req, res) => {
     try {
-        const cities = await Cidade.find().select('-_id -__v'); // o mongodb por padrao cria um id e esse __v que parece servir para controle de versao, achei que nao faria sentido retornar eles.
-        res.status(200).json(cities);
+        const cidades = await Cidade.find().select('-_id -__v');
+        res.status(200).json(cidades);
     } catch (error) {
         res.status(500).json({ error: 'Erro ao buscar cidades' });
+    }
+});
+
+// Consultar cidade pelo nome
+router.get('/nome/:nome', async (req, res) => {
+    try {
+        const cidades = await Cidade.find({ nome: req.params.nome }).select('-_id -__v');
+        res.status(200).json(cidades);
+    } catch (error) {
+        res.status(500).json({ error: 'Erro ao buscar cidade pelo nome' });
+    }
+});
+
+// Consultar cidade pelo estado
+router.get('/estado/:estado', async (req, res) => {
+    try {
+        const cidades = await Cidade.find({ estado: req.params.estado }).select('-_id -__v');
+        res.status(200).json(cidades);
+    } catch (error) {
+        res.status(500).json({ error: 'Erro ao buscar cidade pelo estado' });
     }
 });
 
