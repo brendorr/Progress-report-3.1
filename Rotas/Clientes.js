@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 const Cliente = require('../models/Cliente');
 const Cidade = require('../models/Cidade');
+const authenticateToken = require('../middleware/auth');
 
 // Criar um novo cliente
-router.post('/', async (req, res) => {
+router.post('/',authenticateToken, async (req, res) => {
     const { nomeCompleto, sexo, dataNascimento, idade, cidadeNome } = req.body; // Alteração aqui para cidadeNome
     try {
         const cidade = await Cidade.findOne({ nome: cidadeNome }); // Buscar cidade pelo nome
@@ -27,7 +28,7 @@ router.post('/', async (req, res) => {
 });
 
 // Obter todos os clientes
-router.get('/', async (req, res) => {
+router.get('/', authenticateToken,async (req, res) => {
     try {
         const clientes = await Cliente.find().populate('cidade').select('-__v');
         res.status(200).json(clientes);
@@ -37,7 +38,7 @@ router.get('/', async (req, res) => {
 });
 
 // Consultar cliente pelo nome
-router.get('/nome/:nome', async (req, res) => {
+router.get('/nome/:nome',authenticateToken, async (req, res) => {
     try {
         const clientes = await Cliente.find({ nomeCompleto: req.params.nome }).populate('cidade').select('-__v');
         res.status(200).json(clientes);
@@ -47,7 +48,7 @@ router.get('/nome/:nome', async (req, res) => {
 });
 
 // Consultar cliente pelo ID
-router.get('/:id', async (req, res) => {
+router.get('/:id',authenticateToken, async (req, res) => {
     try {
         const cliente = await Cliente.findById(req.params.id).populate('cidade').select('-__v');
         if (cliente) {
@@ -61,7 +62,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Remover cliente
-router.delete('/:id', async (req, res) => {
+router.delete('/:id',authenticateToken, async (req, res) => {
     try {
         const result = await Cliente.findByIdAndDelete(req.params.id);
         if (result) {
@@ -75,7 +76,7 @@ router.delete('/:id', async (req, res) => {
 });
 
 // Alterar o nome do cliente
-router.put('/:id', async (req, res) => {
+router.put('/:id',authenticateToken, async (req, res) => {
     const { nomeCompleto } = req.body;
     try {
         const cliente = await Cliente.findById(req.params.id);

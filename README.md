@@ -1,6 +1,30 @@
 
 #  Documentação
+# Primeiros passos
+- Antes de acessar qualquer rota, voce precisa de um token. Para conseguir um é muito simples:
+1. Acesse a rota http://localhost:3000/Cadastro com o seguinte corpo:
+    ```json
 
+        {
+            "nome": "string",
+            "senha": "string",
+        }
+
+    ```
+- **Resposta de sucesso**:
+  - **Status**: `200 OK`
+  - **Corpo**:
+    ```json
+    
+        {
+            "token": "string",
+        }
+    
+    ```
+2. Uma vez com seu token, vá até a aba Headers.
+3. Adicione um novo cabeçalho com a chave "token" e o valor do token JWT que você obteve.
+ ![Falha ao carregar imagem](https://ibb.co/M94jQh7)
+4. Voce esta pronto para usar qualquer rota da API!
 ## Cidades
 
 ### Obter todas as cidades
