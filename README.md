@@ -143,7 +143,7 @@
         "sexo": "string",
         "dataNascimento": "date",
         "idade": "number",
-        "cidade": "string"  // Nome da cidade
+        "cidadeNome": "string"  // Nome da cidade
     }
     ```
 
@@ -152,12 +152,12 @@
   - **Corpo**:
     ```json
     {
-        "_id": "string",
         "nomeCompleto": "string",
         "sexo": "string",
         "dataNascimento": "date",
         "idade": "number",
-        "cidade": "string" // id da cidade
+        "cidade": "string", // id da cidade
+        "_id": "string",
     }
     ```
 
@@ -180,7 +180,8 @@
             "cidade": {
                 "_id": "string",
                 "nome": "string",
-                "estado": "string"
+                "estado": "string",
+                "__v": "number"
             }
         }
     ]
@@ -204,7 +205,8 @@
         "cidade": {
             "_id": "string",
             "nome": "string",
-            "estado": "string"
+            "estado": "string",
+            "__v": "number"
         }
     }
     ```
@@ -248,7 +250,8 @@
         "cidade": {
             "_id": "string",
             "nome": "string",
-            "estado": "string"
+            "estado": "string",
+            "__v": "number"
         }
     }
     ```

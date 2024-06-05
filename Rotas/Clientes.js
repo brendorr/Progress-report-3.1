@@ -26,8 +26,10 @@ router.post('/', authenticateToken, async (req, res) => {
             idade,
             cidade: cidade._id // Usar o ID da cidade encontrada
         });
+        const ClienteResponse = newCliente.toObject(); // simplesmente para nao aparecer o __V na resposta
+        delete ClienteResponse.__v;
         await newCliente.save();
-        res.status(201).json(newCliente);
+        res.status(201).json(ClienteResponse);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Erro ao criar cliente' });

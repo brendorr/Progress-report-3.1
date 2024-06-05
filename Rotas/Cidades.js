@@ -3,8 +3,8 @@ const router = express.Router();
 const Cidade = require('../models/Cidade');
 const authenticateToken = require('../middleware/auth');
 
-// criando uma cidade
-router.post('/',authenticateToken, async (req, res) => {
+// criando nova cidade
+router.post('/', authenticateToken, async (req, res) => {
     const { nome, estado } = req.body;
     if (!nome || !estado) {
         return res.status(400).json({ error: 'Todos os campos são obrigatórios' });
@@ -12,8 +12,11 @@ router.post('/',authenticateToken, async (req, res) => {
     try {
         const newCidade = new Cidade({ nome, estado });
         await newCidade.save();
-        res.status(201).json(newCidade);
+        const cidadeResponse = newCidade.toObject(); // simplesmente para nao aparecer o __V na resposta
+        delete cidadeResponse.__v;
+        res.status(201).json(cidadeResponse);
     } catch (error) {
+        console.error(error);
         res.status(500).json({ error: 'Erro ao criar cidade' });
     }
 });
