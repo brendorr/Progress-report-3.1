@@ -23,7 +23,7 @@
     ```
 2. Uma vez com seu token, vá até a aba Headers.
 3. Adicione um novo cabeçalho com a chave "token" e o valor do token JWT que você obteve.
- ![Falha ao carregar imagem](https://ibb.co/M94jQh7)
+ ![Falha ao carregar imagem](https://i.imgur.com/fXNGmHM.png)
 4. Voce esta pronto para usar qualquer rota da API!
 ## Cidades
 
