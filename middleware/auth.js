@@ -1,15 +1,17 @@
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
+const ChaveToken = process.env.JWT_PRIVATE_KEY
 
 const authenticateToken = (req, res, next) => {
     const token = req.header('token');
-    if (!token) return res.status(401).send('Access denied. No token provided.');
+    if (!token) return res.status(401).send('Voce precisa fornecer um token');
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_PRIVATE_KEY || 'jwtPrivateKey');
+        const decoded = jwt.verify(token, ChaveToken || 'jwtPrivateKey'); 
         req.user = decoded;
         next();
     } catch (ex) {
-        res.status(400).send('Invalid token.');
+        res.status(400).send('O token fornecido é inválido');
     }
 };
 

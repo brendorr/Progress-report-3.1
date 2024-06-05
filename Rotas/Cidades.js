@@ -3,7 +3,7 @@ const router = express.Router();
 const Cidade = require('../models/Cidade');
 const authenticateToken = require('../middleware/auth');
 
-// Criar uma nova cidade
+// criando uma cidade
 router.post('/',authenticateToken, async (req, res) => {
     const { nome, estado } = req.body;
     try {
@@ -15,7 +15,7 @@ router.post('/',authenticateToken, async (req, res) => {
     }
 });
 
-// Obter todas as cidades
+// Obtendo todas as cidades
 router.get('/',authenticateToken, async (req, res) => {
     try {
         const cidades = await Cidade.find().select('-_id -__v');
@@ -25,7 +25,7 @@ router.get('/',authenticateToken, async (req, res) => {
     }
 });
 
-// Consultar cidade pelo nome
+// consultar cidade pelo nome
 router.get('/nome/:nome',authenticateToken, async (req, res) => {
     try {
         const cidades = await Cidade.find({ nome: req.params.nome }).select('-_id -__v');
@@ -35,7 +35,7 @@ router.get('/nome/:nome',authenticateToken, async (req, res) => {
     }
 });
 
-// Consultar cidade pelo estado
+// consultar cidade pelo estado
 router.get('/estado/:estado',authenticateToken, async (req, res) => {
     try {
         const cidades = await Cidade.find({ estado: req.params.estado }).select('-_id -__v');

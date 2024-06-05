@@ -2,7 +2,7 @@
 #  Documentação
 # Primeiros passos
 - Antes de acessar qualquer rota, voce precisa de um token. Para conseguir um é muito simples:
-1. Acesse a rota http://localhost:3000/Cadastro com o seguinte corpo:
+1. Acesse a rota http://localhost:3000/Cadastro utilizando o método POST com o seguinte corpo:
     ```json
 
         {
@@ -25,11 +25,12 @@
 3. Adicione um novo cabeçalho com a chave "token" e o valor do token JWT que você obteve.
  ![Falha ao carregar imagem](https://i.imgur.com/fXNGmHM.png)
 4. Voce esta pronto para usar qualquer rota da API!
+
 ## Cidades
 
 ### Obter todas as cidades
 
-- **URL**: `/api/cidades`
+- **URL**: `http://localhost:3000/cidades`
 - **Método**: `GET`
 - **Descrição**: Retorna uma lista de todas as cidades.
 - **Resposta de sucesso**:
@@ -47,7 +48,7 @@
 
 ### Criar uma nova cidade
 
-- **URL**: `/api/cidades`
+- **URL**: `http://localhost:3000/cidades`
 - **Método**: `POST`
 - **Descrição**: Cria uma nova cidade.
 - **Corpo da requisição**:
@@ -71,7 +72,7 @@
 
 ### Consultar cidade pelo nome
 
-- **URL**: `/api/cidades/nome/:nome`
+- **URL**: `http://localhost:3000/cidades/nome/:nome`
 - **Método**: `GET`
 - **Descrição**: Retorna as cidades que correspondem ao nome fornecido.
 - **Resposta de sucesso**:
@@ -87,7 +88,7 @@
 
 ### Consultar cidade pelo estado
 
-- **URL**: `/api/cidades/estado/:estado`
+- **URL**: `http://localhost:3000/cidades/estado/:estado`
 - **Método**: `GET`
 - **Descrição**: Retorna as cidades que correspondem ao estado fornecido.
 - **Resposta de sucesso**:
@@ -107,7 +108,7 @@
 
 ### Obter todos os clientes
 
-- **URL**: `/api/clientes`
+- **URL**: `http://localhost:3000/clientes`
 - **Método**: `GET`
 - **Descrição**: Retorna uma lista de todos os clientes.
 - **Resposta de sucesso**:
@@ -132,7 +133,7 @@
 
 ### Criar um novo cliente
 
-- **URL**: `/api/clientes`
+- **URL**: `http://localhost:3000/clientes`
 - **Método**: `POST`
 - **Descrição**: Cria um novo cliente.
 - **Corpo da requisição**:
@@ -162,7 +163,7 @@
 
 ### Consultar cliente pelo nome
 
-- **URL**: `/api/clientes/nome/:nome`
+- **URL**: `http://localhost:3000/clientes/nome/:nome`
 - **Método**: `GET`
 - **Descrição**: Retorna os clientes que correspondem ao nome fornecido.
 - **Resposta de sucesso**:
@@ -187,7 +188,7 @@
 
 ### Consultar cliente pelo ID
 
-- **URL**: `/api/clientes/:id`
+- **URL**: `http://localhost:3000/clientes/:id`
 - **Método**: `GET`
 - **Descrição**: Retorna o cliente que corresponde ao ID fornecido.
 - **Resposta de sucesso**:
@@ -210,7 +211,7 @@
 
 ### Remover cliente
 
-- **URL**: `/api/clientes/:id`
+- **URL**: `http://localhost:3000/clientes/:id`
 - **Método**: `DELETE`
 - **Descrição**: Remove o cliente que corresponde ao ID fornecido.
 - **Resposta de sucesso**:
@@ -224,7 +225,7 @@
 
 ### Alterar o nome do cliente
 
-- **URL**: `/api/clientes/:id`
+- **URL**: `http://localhost:3000/clientes/:id`
 - **Método**: `PUT`
 - **Descrição**: Altera o nome do cliente que corresponde ao ID fornecido.
 - **Corpo da requisição**:
