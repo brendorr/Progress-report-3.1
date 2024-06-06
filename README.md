@@ -26,6 +26,14 @@
  ![Falha ao carregar imagem](https://i.imgur.com/fXNGmHM.png)
 4. Voce esta pronto para usar qualquer rota da API!
 
+## Populando o banco de dados
+- É possivel popular o banco de dados para tornar mais rapido os testes da api. Basta  usar o seguinte comando no terminal: 
+  ```
+   node populando.js
+  ```
+ - Lembre-se que o terminal deve estar na pasta raiz do projeto node.
+- `Cuidado! Usar esse script apagará todos os dados contidos no DB.`
+
 ## Cidades
 
 ### Obter todas as cidades
