@@ -25,6 +25,9 @@ router.post('/', authenticateToken, async (req, res) => {
 router.get('/',authenticateToken, async (req, res) => {
     try {
         const cidades = await Cidade.find().select('-__v');
+        if (clientes.length === 0){
+            return res.status(404).json({ error: 'Não existe nenhuma cidade cadastrada no banco de dados' });
+        }
         res.status(200).json(cidades);
     } catch (error) {
         res.status(500).json({ error: 'Erro ao buscar cidades' });

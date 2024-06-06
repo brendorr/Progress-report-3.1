@@ -40,6 +40,9 @@ router.post('/', authenticateToken, async (req, res) => {
 router.get('/', authenticateToken,async (req, res) => {
     try {
         const clientes = await Cliente.find().populate('cidade').select('-__v');
+        if (clientes.length === 0){
+            return res.status(404).json({ error: 'Não existe nenhum cliente cadastrado no banco de dados' });
+        }
         res.status(200).json(clientes);
     } catch (error) {
         res.status(500).json({ error: 'Erro ao buscar clientes' });

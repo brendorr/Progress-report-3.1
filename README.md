@@ -1,6 +1,11 @@
 
 #  Documentação
+##
 # Primeiros passos
+## Mongodb
+- Para o uso dessa api, voce precisa ter o MongoDB instalando no seu computador, assim como um servidor Mongo cujo a URI seja `mongodb://localhost:27017`. 
+- Se preferir, voce pode acessar o arquivo `.env` do repositorio e trocar a URI podrão do projeto, substituindo `mongodb://localhost:27017` pela URI do seu banco de dados Mongo.
+## Conseguindo um token
 - Antes de acessar qualquer rota, voce precisa de um token. Para conseguir um é muito simples:
 1. Acesse a rota http://localhost:3000/Cadastro utilizando o método POST com o seguinte corpo:
     ```json
